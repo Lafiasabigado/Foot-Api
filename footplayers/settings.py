@@ -83,12 +83,6 @@ REST_FRAMEWORK = {
 
 DATABASES = {
     "default": {
-        "ENGINE": 'django.db.backends.postgresql',
-        "NAME": "footplayers",
-        'USER': 'dev',
-        'PASSWORD': 'fplayer',
-        'HOST': 'localhost',
-        'PORT': '5432',
         'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
     }
 }
