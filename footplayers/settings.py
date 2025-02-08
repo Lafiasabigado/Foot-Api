@@ -13,10 +13,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import dj_database_url
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -90,12 +90,32 @@ REST_FRAMEWORK = {
     )
 }
 
+# Environnement (development ou production)
+ENVIRONMENT = config('ENVIRONMENT', default='development')
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
-}
+if ENVIRONMENT == 'development':
+    # Configuration pour la base de données locale (PostgreSQL)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('DB_NAME', default='footplayers'),
+            'USER': config('DB_USER', default=''),
+            'PASSWORD': config('DB_PASSWORD', default=''),
+            'HOST': config('DB_HOST', default='localhost'),
+            'PORT': config('DB_PORT', default='5432'),
+        }
+    }
+else:
+    # Configuration pour la base de données distante (Render)
+    DATABASES = {
+        'default': dj_database_url.config(default=config('DATABASE_URL'))
+    }
+
+# Debug mode
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 
 # Password validation
