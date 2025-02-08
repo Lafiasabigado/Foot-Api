@@ -11,6 +11,7 @@ from django.urls import path,re_path
 from drf_yasg import openapi
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
+from rest_framework.permissions import AllowAny
 
 router = DefaultRouter()
 router.register(r'player',PlayerViewset,basename="player")
@@ -22,7 +23,7 @@ schema_view = get_schema_view(
         description="Une API pour gérer des joueurs de football",
     ),
     public=True,
-    permission_classes=(permissions.AllowAny,),
+    permission_classes=(AllowAny),
 )
 
 
