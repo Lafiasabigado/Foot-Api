@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "fplayers",
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -75,7 +76,11 @@ WSGI_APPLICATION = "footplayers.wsgi.application"
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE':1
+    'PAGE_SIZE':1,
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
 }
 
 # Database
