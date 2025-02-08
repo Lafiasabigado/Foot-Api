@@ -23,7 +23,7 @@ schema_view = get_schema_view(
         description="Une API pour gérer des joueurs de football",
     ),
     public=True,
-    permission_classes=(AllowAny),
+    permission_classes=[AllowAny],
 )
 
 
