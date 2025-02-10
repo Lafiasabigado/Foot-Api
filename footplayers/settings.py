@@ -74,6 +74,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "footplayers.wsgi.application"
 
+
+SWAGGER_SETTINGS = {
+    "USE_SESSION_AUTH": False,
+    "LOGIN_URL": None,
+    "LOGOUT_URL": None,
+}
+
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE':1,
