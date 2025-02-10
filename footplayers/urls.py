@@ -14,22 +14,22 @@ from drf_yasg.views import get_schema_view
 from rest_framework.permissions import AllowAny
 
 router = DefaultRouter()
-router.register(r'player',PlayerViewset,basename="player")
+router.register(r'',PlayerViewset,basename="player")
 
 schema_view = get_schema_view(
     openapi.Info(
         title="Football Players API",
         default_version="v1",
-        description="Une API pour gérer des joueurs de football",
+        description="Une API qui fournit des informations sur les joueurs de football",
     ),
     public=True,
     permission_classes=(AllowAny,),
 )
 
 urlpatterns = [
-    path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path("admin/", admin.site.urls),
     path("accounts/login", auth_views.LoginView.as_view(), name="login"),
     path("api-auth",include('rest_framework.urls')),
-    path('',include(router.urls))
+    path('player',include(router.urls))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
