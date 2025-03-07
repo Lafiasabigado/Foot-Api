@@ -5,4 +5,5 @@ dj-database-url
 drf_yasg
 python-decouple
 whitenoise
-
+djangorestframework-simplejwt
+django-cors-headers
