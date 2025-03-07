@@ -6,5 +6,4 @@ from fplayers.models import Player
 class PlayerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Player
-        fields = ["firstname","lastname","nationality","date_of_birthday","club",'image',"goals",
-                  "assists","position"]
+        fields = '__all__'
