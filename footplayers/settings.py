@@ -40,12 +40,19 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework.authtoken",
+    "dj_rest_auth",
     "fplayers",
     'drf_yasg',
     "whitenoise.runserver_nostatic",
     "corsheaders",
-    "rest_framework_simplejwt"
+    "rest_framework_simplejwt",
+    "djoser"
 ]
+
+DJOSER = {
+    "USER_ID_FIELD": "id",
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
